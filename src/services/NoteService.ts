@@ -14,8 +14,16 @@ export const noteService = {
   updateNote: (id: number, changes: INoteUpdate) => {
     db.notes.update(id, changes)
   },
+  deleteNote: (id: number) => {
+    db.notes.delete(id)
+  },
+  resetDatabase: () =>
+    db.transaction('rw', db.notes, async () => {
+      await Promise.all(db.tables.map((table) => table.clear()))
+    }),
 }
 
-export const { fetchNotes, createNote, updateNote } = noteService
+export const { fetchNotes, createNote, updateNote, deleteNote, resetDatabase } =
+  noteService
 
 export default noteService

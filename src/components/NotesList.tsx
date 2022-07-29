@@ -1,11 +1,13 @@
-import { List, Typography } from 'antd'
+import type { MouseEvent } from 'react'
+import { List, Typography, Button } from 'antd'
 import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context'
 import { INote } from '../models/INote'
-import { fetchNotes } from '../services/NoteService'
+import { deleteNote, fetchNotes, updateNote } from '../services/NoteService'
 import classes from './NotesList.module.less'
 import { formatDate } from '../utils/formatDate'
 import { useDebounce } from '../hooks/useDebounce'
+import { showConfirm } from './ConfirmModal'
 
 interface NotesListProps {
   search: string
@@ -40,7 +42,24 @@ function NotesList({ search }: NotesListProps) {
     }
   }
 
-  if (notes && loading) {
+  const removeNote = (e: MouseEvent<HTMLElement>, note: INote) => {
+    e.stopPropagation()
+    showConfirm(() => {
+      if (!note.id) return
+      if (currentNote?.id === note.id && setCurrentNote) {
+        setCurrentNote(null)
+      }
+      deleteNote(note.id)
+    })
+  }
+
+  const changeNoteName = (note: INote, name: string) => {
+    if (note?.id) {
+      updateNote(note.id, { name })
+    }
+  }
+
+  if (fetchedNotes && notes && loading) {
     setLoading(false)
   }
 
@@ -62,8 +81,26 @@ function NotesList({ search }: NotesListProps) {
             onClick={() => selectItem(item)}
             key={item.id}
             className={itemClasses.join(' ')}
+            actions={[
+              <Button
+                type="link"
+                key="delete-note"
+                onClick={(e) => removeNote(e, item)}
+              >
+                Delete
+              </Button>,
+            ]}
           >
-            <Typography.Title level={5} style={{ margin: 0 }}>
+            <Typography.Title
+              editable={{
+                tooltip: false,
+                onChange: (name) => {
+                  changeNoteName(item, name)
+                },
+              }}
+              level={5}
+              style={{ margin: 0 }}
+            >
               {item.name}
             </Typography.Title>
             <Typography.Text>

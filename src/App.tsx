@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AppContext } from './context'
-import NotesLayout from './layouts/NotesLayout'
+import NotesLayout from './components/layouts/NotesLayout'
 import { INote } from './models/INote'
 import './assets/styles/theme.less'
 

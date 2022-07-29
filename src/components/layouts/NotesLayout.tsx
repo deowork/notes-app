@@ -1,11 +1,11 @@
 import { Button, Layout, Menu, Space } from 'antd'
-import React, { useContext, useState } from 'react'
-import Editor from '../components/Editor'
-import { AppContext } from '../context'
-import { createNote } from '../services/NoteService'
-import NotesList from '../components/NotesList'
-import SearchForm from '../components/SearchForm'
-import '../assets/styles/NotesLayout.less'
+import { useContext, useState } from 'react'
+import Editor from '../Editor'
+import { AppContext } from '../../context'
+import { createNote, resetDatabase } from '../../services/NoteService'
+import NotesList from '../NotesList'
+import SearchForm from '../SearchForm'
+import '../../assets/styles/NotesLayout.less'
 
 const { Header, Sider } = Layout
 
@@ -44,6 +44,7 @@ function NotesLayout() {
         <SearchForm search={search} setSearch={setSearch} />
         <Space direction="horizontal">
           <Button onClick={createBlankNote}>New Note</Button>
+          <Button onClick={resetDatabase}>Reset DB</Button>
         </Space>
         <NotesList search={search} />
         <Menu defaultSelectedKeys={['1']} mode="inline" />

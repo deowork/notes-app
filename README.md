@@ -12,8 +12,8 @@ pnpm run dev
 4. [x] Area for viewing/editing notes
 5. [x] Get notes from Indexed DB
 6. [x] Rendered MD from the local browser
-7. [ ] Delete and edit control buttons
-8. [ ] Deletion is confirmed in [modal](https://ant.design/components/modal/)
+7. [x] Delete and edit control buttons
+8. [x] Deletion is confirmed in [modal](https://ant.design/components/modal/)
 9. [x] On Edit display editor in workspace instead of text
 10. [x] During editing, content saving should happen automatically
 11. [x] The search for notes goes by partial character input, as in this document when you click on search
