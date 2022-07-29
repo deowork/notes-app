@@ -3,8 +3,9 @@ import React, { useContext, useState } from 'react'
 import Editor from '../components/Editor'
 import { AppContext } from '../context'
 import { createNote } from '../services/NoteService'
-import '../assets/styles/NotesLayout.less'
 import NotesList from '../components/NotesList'
+import SearchForm from '../components/SearchForm'
+import '../assets/styles/NotesLayout.less'
 
 const { Header, Sider } = Layout
 
@@ -12,6 +13,7 @@ function NotesLayout() {
   const { setCurrentNote } = useContext(AppContext)
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [search, setSearch] = useState<string>('')
 
   const toggleEditor = () => {
     setIsEditing((isEditing) => !isEditing)
@@ -39,10 +41,11 @@ function NotesLayout() {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
+        <SearchForm search={search} setSearch={setSearch} />
         <Space direction="horizontal">
           <Button onClick={createBlankNote}>New Note</Button>
         </Space>
-        <NotesList />
+        <NotesList search={search} />
         <Menu defaultSelectedKeys={['1']} mode="inline" />
       </Sider>
       <Layout className="site-layout">

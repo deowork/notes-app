@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
   '@typescript-eslint/eslint-plugin': ^5.31.0
@@ -30,6 +31,7 @@ specifiers:
   vite: ^3.0.0
 
 dependencies:
+  '@ant-design/icons': 4.7.0_biqbaboplfbrettd7655fr4n2y
   antd: 4.22.2_biqbaboplfbrettd7655fr4n2y
   dayjs: 1.11.4
   dexie: 3.2.2
