@@ -1,0 +1,26 @@
+.notes-list {
+  margin-bottom: 65px;
+
+  .list-item {
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    border-bottom: 0 !important;
+    outline: none;
+    transition: background-color .05s ease-in-out;
+
+    &:hover {
+      background-color: rgba(70, 70, 70, 0.31);
+    }
+
+    &.current-item {
+      background-color: #464646;
+    }
+  }
+
+}
