@@ -1,6 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../models/db'
-import { INote } from '../models/INote'
+import { INote, INoteUpdate } from '../models/INote'
 
 export const noteService = {
   fetchNotes: () =>
@@ -11,8 +11,11 @@ export const noteService = {
       resolve({ ...note, id: Number(id) })
     })
   },
+  updateNote: (id: number, changes: INoteUpdate) => {
+    db.notes.update(id, changes)
+  },
 }
 
-export const { fetchNotes, createNote } = noteService
+export const { fetchNotes, createNote, updateNote } = noteService
 
 export default noteService

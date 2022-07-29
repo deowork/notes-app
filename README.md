@@ -6,16 +6,16 @@ pnpm run dev
 ```
 
 ## TODO
-1. [ ] Use [Ant Design](https://ant.design/) and TypeScript
-2. [ ] Notes list in sidebar
+1. [x] Use [Ant Design](https://ant.design/) and TypeScript
+2. [x] Notes list in sidebar
 3. [ ] Search bar in sidebar
-4. [ ] Area for viewing/editing notes
-5. [ ] Get notes from Indexed DB
-6. [ ] Rendered MD from the local browser
+4. [x] Area for viewing/editing notes
+5. [x] Get notes from Indexed DB
+6. [x] Rendered MD from the local browser
 7. [ ] Delete and edit control buttons
 8. [ ] Deletion is confirmed in [modal](https://ant.design/components/modal/)
-9. [ ] On Edit display editor in workspace instead of text
-10. [ ] During editing, content saving should happen automatically
+9. [x] On Edit display editor in workspace instead of text
+10. [x] During editing, content saving should happen automatically
 11. [ ] The search for notes goes by partial character input, as in this document when you click on search
 12. [ ] Place the program code in several components
 13. [ ] For communication between components, use Context
